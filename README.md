@@ -1,2 +1,0 @@
-# VBA-Challenge
-VBA Challenges
