@@ -28,7 +28,6 @@ Sub stockChanges()
         greatestPercDecrease = 0
         greatestTotalVolume = 0
         
-        
         startPrice = ws.Range("F2").Value
         endPrice = ws.Range("F2").Value
         yearlyChange = endPrice - startPrice
@@ -45,7 +44,6 @@ Sub stockChanges()
         ws.Range("O4").Value = "Greatest Total Volume"
         ws.Range("P1").Value = "Ticker"
         ws.Range("Q1").Value = "Value"
-        
         
         lastRowState = ws.Cells(Rows.Count, "A").End(xlUp).Row - 1
         
@@ -81,22 +79,26 @@ Sub stockChanges()
                     greatestPercIncrease = percentageChange
                 End If
                 
-                
                 startPrice = ws.Cells(i + 1, 5).Value
+                
                 ws.Cells(Summary_Table_Row, 9).Value = ws.Cells(i, 1).Value
                 ws.Cells(Summary_Table_Row, 10).Value = yearlyChange
+                
                 If (yearlyChange < 0) Then
                     ws.Cells(Summary_Table_Row, 10).Interior.ColorIndex = 3
                 ElseIf (yearlyChange > 0) Then
                     ws.Cells(Summary_Table_Row, 10).Interior.ColorIndex = 4
                 End If
+                
                 ws.Cells(Summary_Table_Row, 11).Value = percentageChange
                 ws.Cells(Summary_Table_Row, 12).Value = totalStockVolume
                 Summary_Table_Row = Summary_Table_Row + 1
                 totalStockVolume = 0
+            
             End If
                 
         Next i
+
         ws.Columns("I:Q").AutoFit
         ws.Columns("K:K").NumberFormat = "0.00%"
         ws.Range("Q2:Q3").NumberFormat = "0.00%"
